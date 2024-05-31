@@ -7,6 +7,7 @@ import { Produit } from './model/produit.model';
 export class ProduitService {
 
   produits : Produit[];
+  produit! : Produit;
 
   constructor() {
 
@@ -23,5 +24,37 @@ export class ProduitService {
 
   ajouterProduit( prod: Produit){
     this.produits.push(prod);
+  }
+
+  supprimerProduit(prod: Produit)
+  {
+    const index = this.produits.indexOf(prod, 0);
+    if (index > -1) {
+      this.produits.splice(index, 1);
+    }
+  }
+
+  consulterProduit(id:number): Produit{
+    this.produit = this.produits.find(p => p.idProduit == id)!;
+    return this.produit;
+  }
+
+  trierProduits() {
+    this.produits = this.produits.sort((n1,n2) => {
+      if (n1.idProduit! > n2.idProduit!) {
+        return 1;
+      }
+      if (n1.idProduit! < n2.idProduit!) {
+        return -1;
+      }
+
+      return 0;
+    });
+  }
+
+  updateProduit(p:Produit) {
+    this.supprimerProduit(p);
+    this.ajouterProduit(p);
+    this.trierProduits();
   }
 }

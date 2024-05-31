@@ -23,6 +23,15 @@
             <input type="date" [(ngModel)]="newProduit.dateCreation" name="dateCreation" class="form-control">
         </div>
 
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Categorie</label>
+            <select name="idCat" id="idCat" class="form-control form-control-lg" [(ngModel)]="newIdCat">
+                <option *ngFor="let cat of categories" [value]="cat.idCat">
+                    {{ cat.nomCat }}
+                </option>
+            </select>
+        </div>
+
         <div class="mt-2">
             <button type="submit" (click)="addProduit()" class="btn btn-success">Ajouter</button>
         </div>

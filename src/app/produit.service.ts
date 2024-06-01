@@ -3,6 +3,7 @@ import { Produit } from './model/produit.model';
 import { Categorie } from './model/categorie.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CategorieWrapper } from './model/categorie-wrapper.model';
 
 const httpOptions = {
   headers: new HttpHeaders( {'Content-Type' : 'application/json'} )
@@ -14,6 +15,7 @@ const httpOptions = {
 export class ProduitService {
 
   apiUrl: string = 'http://localhost:8080/produits/api';
+  apiURLCat: string = 'http://localhost:8080/produits/cat';
 
   produits! : Produit[];
   produit! : Produit;
@@ -69,8 +71,8 @@ export class ProduitService {
     return this.http.put<Produit>(this.apiUrl, prod, httpOptions);
   }
 
-  listeCategories():Observable<Categorie[]> {
-    return this.http.get<Categorie[]>(this.apiUrl+"/cat");
+  listeCategories():Observable<CategorieWrapper> {
+    return this.http.get<CategorieWrapper>(this.apiURLCat);
   }
 
   // consulterCategorie(id:number): Categorie{

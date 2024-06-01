@@ -6,8 +6,8 @@
             <input type="text" class="form-control" [(ngModel)]="nomProduit" name="nomProduit" class="form-control">
             <button type="submit" (click)="rechercherProds()" class="btn btn-primary mb-2 ml-2">Rechercher</button> -->
             <label>Nom Produit en tapant</label>
-            <!-- <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)"> -->
-            <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" >
+            <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+            <!-- <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" > -->
         </div>
     </form>
 
@@ -23,8 +23,8 @@
                         <th>Categorie</th>
                     </tr>
                 </thead>
-                <!-- <tbody *ngFor="let produit of produits"> -->
-                <tbody *ngFor="let produit of produits | searchFilter: searchTerm ">
+                <tbody *ngFor="let produit of produits">
+                <!-- <tbody *ngFor="let produit of produits | searchFilter: searchTerm "> -->
                     <tr>
                         <td>{{produit.idProduit}}</td>
                         <td>{{produit.nomProduit}}</td>

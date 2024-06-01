@@ -78,4 +78,15 @@ export class ProduitService {
   // consulterCategorie(id:number): Categorie{
   //   return this.categories.find(cat => cat.idCat == id)!;
   // }
+
+  rechercherParCategorie(idCat: number):Observable<Produit[]> {
+    const url = `${this.apiUrl}/prodscat/${idCat}`;
+    return this.http.get<Produit[]>(url);
+  }
+
+  rechercherParNom(nom: string):Observable< Produit[]> {
+    const url = `${this.apiUrl}/prodsByName/${nom}`;
+    return this.http.get<Produit[]>(url);
+  }
+    
 }
